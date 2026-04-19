@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>飲食店向けホームページ制作｜石のホームページ工房</title>
+  <meta name="description" content="個人経営の飲食店向け。予約システム・期間限定メニュー・店内写真ギャラリーを備えたホームページを15万円〜で制作。AI活用で発信も楽に。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Variables ===== */
+    :root {
+      --dark: #1a1108;
+      --dark2: #2c1d0e;
+      --brown: #3d2510;
+      --gold: #c8863a;
+      --gold-light: #e4a85c;
+      --gold-pale: #f5ddb8;
+      --cream: #faf5ec;
+      --cream-dark: #f0e6d2;
+      --warm-white: #fffdf8;
+      --text-dark: #1a1108;
+      --text-mid: #3d3020;
+      --text-light: #7a6848;
+      --border: #ddd0b8;
+      --serif: 'Noto Serif JP', serif;
+      --serif-en: 'Cormorant Garamond', serif;
+      --sans: 'Noto Sans JP', sans-serif;
+      --shadow: rgba(26,17,8,0.15);
+      --shadow-deep: rgba(26,17,8,0.28);
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 18px; }
+    body { font-family: var(--sans); color: var(--text-dark); background: var(--cream); line-height: 1.8; overflow-x: hidden; }
+    img { max-width: 100%; display: block; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== Utility ===== */
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 28px; }
+    .container-wide { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+    .section { padding: 88px 0; }
+    .section-label {
+      font-family: var(--serif-en);
+      font-size: 0.78rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.55rem, 3.2vw, 2.3rem);
+      font-weight: 700;
+      color: var(--dark);
+      text-align: center;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+    .section-title-light { color: #fff; }
+    .section-sub {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 56px;
+      line-height: 1.8;
+    }
+    .gold-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    .gold-ornament::before, .gold-ornament::after {
+      content: '';
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .gold-ornament span {
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      font-family: var(--serif-en);
+    }
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 18px 40px;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px rgba(200,134,58,0.4);
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+    .btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(200,134,58,0.5); }
+    .btn-ghost {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      color: #fff;
+      box-shadow: none;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); box-shadow: none; }
+
+    /* ===== Header ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 0 28px;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    header.scrolled {
+      background: rgba(26,17,8,0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.3);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.06em;
+    }
+    .logo-accent { color: var(--gold-light); }
+    .logo-badge {
+      display: inline-block;
+      margin-left: 8px;
+      font-size: 0.65rem;
+      background: rgba(200,134,58,0.3);
+      border: 1px solid rgba(200,134,58,0.5);
+      color: var(--gold-light);
+      padding: 2px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.08em;
+    }
+    nav { display: flex; gap: 4px; align-items: center; }
+    nav a {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 2px;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--gold);
+      color: #fff !important;
+      font-weight: 700;
+      padding: 8px 18px !important;
+      border-radius: 2px;
+      margin-left: 4px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+
+    /* ===== Hero ===== */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80&fit=crop&crop=center');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.05);
+      animation: heroZoom 8s ease-out forwards;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.05); }
+      to { transform: scale(1.0); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(26,17,8,0.80) 0%,
+        rgba(26,17,8,0.55) 50%,
+        rgba(26,17,8,0.45) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding: 0 28px;
+      margin-left: 8vw;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-eyebrow {
+      font-family: var(--serif-en);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.35;
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+    .hero-desc {
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+      line-height: 1.95;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-note { margin-top: 18px; color: rgba(255,255,255,0.4); font-size: 0.78rem; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.4);
+      font-family: var(--serif-en);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, rgba(200,134,58,0.7));
+    }
+    @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+    /* ===== Problems ===== */
+    #problems { background: var(--dark); padding: 80px 0; }
+    .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
+    .problem-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 32px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: background 0.25s;
+    }
+    .problem-item:hover { background: rgba(255,255,255,0.06); }
+    .problem-num {
+      font-family: var(--serif-en);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: rgba(200,134,58,0.3);
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .problem-text { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.8; }
+    .problems-close {
+      margin-top: 48px;
+      background: var(--gold);
+      border-radius: 3px;
+      padding: 36px 48px;
+      text-align: center;
+    }
+    .problems-close p {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.7;
+    }
+
+    /* ===== Features ===== */
+    #features { background: var(--warm-white); }
+    .feature-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-bottom: 80px;
+      box-shadow: 0 8px 40px var(--shadow);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .feature-block:last-child { margin-bottom: 0; }
+    .feature-block.reverse { direction: rtl; }
+    .feature-block.reverse > * { direction: ltr; }
+    .feature-img {
+      position: relative;
+      min-height: 380px;
+      overflow: hidden;
+    }
+    .feature-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .feature-block:hover .feature-img img { transform: scale(1.04); }
+    .feature-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26,17,8,0.25);
+    }
+    .feature-img-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--gold);
+      color: #fff;
+      font-family: var(--serif);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+    }
+    .feature-content {
+      background: #fff;
+      padding: 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .feature-label {
+      font-family: var(--serif-en);
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .feature-title {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.45;
+      margin-bottom: 20px;
+    }
+    .feature-desc {
+      color: var(--text-light);
+      font-size: 0.92rem;
+      line-height: 1.9;
+      margin-bottom: 28px;
+    }
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+    .feature-list li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .feature-note {
+      font-size: 0.8rem;
+      color: rgba(122,104,72,0.7);
+      background: var(--cream);
+      border-left: 3px solid var(--gold);
+      padding: 10px 14px;
+      border-radius: 0 3px 3px 0;
+      line-height: 1.6;
+    }
+
+    /* ===== Reservation Mockup ===== */
+    .reservation-mockup {
+      background: var(--cream-dark);
+      border-radius: 3px;
+      padding: 28px;
+      font-size: 0.85rem;
+    }
+    .mockup-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .mockup-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .mockup-field {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 10px 12px;
+      color: rgba(61,48,32,0.5);
+      font-size: 0.82rem;
+    }
+    .mockup-field.full { grid-column: 1/-1; }
+    .mockup-submit {
+      width: 100%;
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      padding: 12px;
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: default;
+      margin-top: 8px;
+      letter-spacing: 0.06em;
+    }
+    .mockup-note {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* ===== Menu Mockup ===== */
+    .menu-mockup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .menu-card {
+      background: #fff;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px var(--shadow);
+    }
+    .menu-card-img {
+      height: 110px;
+      overflow: hidden;
+    }
+    .menu-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .menu-card-body { padding: 12px; }
+    .menu-card-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 1px;
+      margin-bottom: 6px;
+      letter-spacing: 0.06em;
+    }
+    .menu-card-name { font-family: var(--serif); font-size: 0.82rem; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+    .menu-card-price { font-size: 0.78rem; color: var(--gold); font-weight: 700; }
+    .menu-update-note {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+
+    /* ===== Gallery Mockup ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 160px);
+      gap: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .gallery-cell { overflow: hidden; }
+    .gallery-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .gallery-cell:hover img { transform: scale(1.06); }
+    .gallery-cell.tall { grid-row: span 2; }
+
+    /* ===== Sample Sites ===== */
+    #samples { background: var(--dark2); }
+    .samples-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .sample-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .sample-card:hover { border-color: rgba(200,134,58,0.5); transform: translateY(-4px); }
+    .sample-thumb {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sample-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .sample-card:hover .sample-thumb img { transform: scale(1.04); }
+    .sample-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26,17,8,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .sample-card:hover .sample-thumb-overlay { opacity: 1; }
+    .sample-thumb-label {
+      background: var(--gold);
+      color: #fff;
+      font-family: var(--serif);
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+    }
+    .sample-body { padding: 28px; }
+    .sample-type {
+      font-family: var(--serif-en);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .sample-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .sample-desc { color: rgba(255,255,255,0.55); font-size: 0.88rem; line-height: 1.7; margin-bottom: 16px; }
+    .sample-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .sample-tag {
+      background: rgba(200,134,58,0.15);
+      border: 1px solid rgba(200,134,58,0.3);
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .sample-link {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      border-bottom: 1px solid rgba(200,134,58,0.4);
+      padding-bottom: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .sample-link:hover { border-color: var(--gold-light); }
+    .sample-coming {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.82rem;
+    }
+    .sample-coming::before { content: ''; display: block; width: 6px; height: 6px; background: rgba(200,134,58,0.4); border-radius: 50%; }
+
+    /* ===== Reasons ===== */
+    #reasons { background: var(--cream-dark); }
+    .reasons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .reason-card {
+      background: var(--warm-white);
+      border-radius: 3px;
+      padding: 40px 32px;
+      box-shadow: 0 4px 24px var(--shadow);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .reason-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px var(--shadow-deep); }
+    .reason-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+    .reason-num { font-family: var(--serif-en); font-size: 4rem; font-weight: 600; color: var(--gold-pale); line-height: 1; margin-bottom: 12px; }
+    .reason-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--dark); margin-bottom: 14px; line-height: 1.5; }
+    .reason-desc { font-size: 0.92rem; color: var(--text-light); line-height: 1.85; }
+
+    /* ===== AI ===== */
+    #ai-support { background: var(--dark); }
+    .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .ai-img { border-radius: 3px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
+    .ai-img img { width: 100%; height: 420px; object-fit: cover; }
+    .ai-content {}
+    .ai-title { font-family: var(--serif); font-size: clamp(1.4rem,3vw,2rem); font-weight: 700; color: #fff; line-height: 1.5; margin-bottom: 20px; }
+    .ai-title em { font-style: normal; color: var(--gold-light); }
+    .ai-desc { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.9; margin-bottom: 28px; }
+    .ai-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .ai-tag {
+      background: rgba(200,134,58,0.15);
+      border: 1px solid rgba(200,134,58,0.3);
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      padding: 8px 14px;
+      border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .ai-tag svg { flex-shrink: 0; opacity: 0.85; }
+
+    /* ===== Pricing ===== */
+    #pricing { background: var(--warm-white); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; }
+    .pricing-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: box-shadow 0.25s, transform 0.2s;
+    }
+    .pricing-card:hover { box-shadow: 0 8px 28px var(--shadow); transform: translateY(-3px); }
+    .pricing-card.featured { border-color: var(--gold); border-width: 2px; position: relative; }
+    .pricing-card.featured::before { content: 'おすすめ'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 4px 16px; border-radius: 20px; white-space: nowrap; letter-spacing: 0.06em; }
+    .pricing-name { font-family: var(--serif); font-size: 0.88rem; font-weight: 700; color: var(--text-mid); margin-bottom: 14px; line-height: 1.5; }
+    .pricing-amount { font-family: var(--serif); font-size: 1.9rem; font-weight: 900; color: var(--dark); line-height: 1; margin-bottom: 4px; }
+    .pricing-amount span { font-size: 0.88rem; font-weight: 400; }
+    .pricing-note { font-size: 0.75rem; color: var(--text-light); margin-top: 6px; line-height: 1.5; }
+    .pricing-divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+    .pricing-features { list-style: none; text-align: left; font-size: 0.82rem; color: var(--text-mid); line-height: 1.7; display: flex; flex-direction: column; gap: 5px; }
+    .pricing-features li::before { content: '・'; color: var(--gold); }
+
+    /* ===== FAQ ===== */
+    #faq { background: var(--cream-dark); }
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--warm-white); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .faq-q { width: 100%; text-align: left; font-family: var(--serif); font-size: 0.98rem; font-weight: 600; color: var(--dark); padding: 20px 24px; background: none; border: none; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; line-height: 1.6; transition: background 0.2s; }
+    .faq-q:hover { background: var(--cream); }
+    .faq-q-mark { flex-shrink: 0; width: 26px; height: 26px; background: var(--dark); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; margin-top: 1px; }
+    .faq-arrow { margin-left: auto; flex-shrink: 0; transition: transform 0.3s; color: var(--gold); margin-top: 2px; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 24px 20px 62px; font-size: 0.92rem; color: var(--text-mid); line-height: 1.9; border-top: 1px solid var(--border); }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== Contact ===== */
+    #contact { background: var(--dark); }
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 56px; align-items: start; }
+    .contact-info h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 14px; }
+    .contact-info p { color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.9; margin-bottom: 24px; }
+    .contact-tel { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--gold-light); margin-bottom: 6px; }
+    .contact-tel-note { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+    .contact-email { margin-top: 14px; color: var(--gold-light); font-size: 0.92rem; }
+    .contact-form { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 36px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.75); margin-bottom: 7px; }
+    .form-label .req { background: var(--gold); color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 1px; margin-left: 6px; vertical-align: middle; }
+    .form-control { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 3px; padding: 12px 16px; font-size: 0.95rem; color: #fff; font-family: var(--sans); outline: none; transition: border-color 0.2s, background 0.2s; }
+    .form-control::placeholder { color: rgba(255,255,255,0.25); }
+    .form-control:focus { border-color: var(--gold); background: rgba(255,255,255,0.09); }
+    select.form-control option { background: var(--dark); color: #fff; }
+    textarea.form-control { resize: vertical; min-height: 100px; }
+    .form-submit { width: 100%; margin-top: 6px; font-size: 1rem; padding: 16px; }
+    .form-note { font-size: 0.75rem; color: rgba(255,255,255,0.35); text-align: center; margin-top: 12px; }
+    .form-success { display: none; text-align: center; padding: 40px; color: #fff; }
+    .form-success h3 { font-family: var(--serif); font-size: 1.4rem; color: var(--gold-light); margin-bottom: 10px; }
+
+    /* ===== CTA Banner ===== */
+    .cta-banner { position: relative; overflow: hidden; padding: 80px 28px; text-align: center; }
+    .cta-banner-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=1400&q=80&fit=crop&crop=center');
+      background-size: cover;
+      background-position: center;
+    }
+    .cta-banner-overlay { position: absolute; inset: 0; background: rgba(26,17,8,0.78); }
+    .cta-banner-content { position: relative; z-index: 2; }
+    .cta-banner h2 { font-family: var(--serif); font-size: clamp(1.4rem,3vw,2.2rem); font-weight: 700; color: #fff; margin-bottom: 12px; line-height: 1.55; }
+    .cta-banner p { color: rgba(255,255,255,0.75); font-size: 0.95rem; margin-bottom: 32px; }
+    .cta-btn-outline { background: transparent; border: 2px solid var(--gold-light); color: var(--gold-light); font-family: var(--serif); font-size: 1rem; font-weight: 700; padding: 16px 40px; border-radius: 2px; display: inline-block; transition: all 0.25s; letter-spacing: 0.06em; margin-left: 12px; }
+    .cta-btn-outline:hover { background: var(--gold); border-color: var(--gold); color: #fff; transform: translateY(-2px); }
+
+    /* ===== Footer ===== */
+    footer { background: #0f0a04; border-top: 1px solid rgba(200,134,58,0.15); padding: 48px 28px 32px; }
+    .footer-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand {}
+    .footer-logo { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .footer-logo span { color: var(--gold-light); }
+    .footer-tagline { color: rgba(255,255,255,0.35); font-size: 0.8rem; line-height: 1.7; }
+    .footer-nav h4 { font-family: var(--serif); font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 12px; letter-spacing: 0.08em; }
+    .footer-nav-links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav-links a { color: rgba(255,255,255,0.45); font-size: 0.82rem; transition: color 0.2s; }
+    .footer-nav-links a:hover { color: var(--gold-light); }
+    .footer-copy { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; text-align: center; color: rgba(255,255,255,0.2); font-size: 0.75rem; max-width: 1000px; margin: 0 auto; }
+
+    /* ===== Reveal ===== */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ===== Floating CTA ===== */
+    .floating-cta {
+      position: fixed;
+      bottom: 28px;
+      right: 24px;
+      z-index: 300;
+      background: var(--gold);
+      color: #fff;
+      font-family: var(--serif);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 32px;
+      box-shadow: 0 4px 24px rgba(200,134,58,0.55), 0 2px 8px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.35s, transform 0.35s, background 0.2s;
+      pointer-events: none;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .floating-cta.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .floating-cta:hover { background: var(--gold-light); }
+    .floating-cta svg { flex-shrink: 0; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 820px) {
+      html { font-size: 16px; }
+      .section { padding: 60px 0; }
+      nav { display: none; }
+
+      #hero { min-height: 100svh; align-items: flex-end; padding-bottom: 80px; }
+      .hero-content { margin-left: 0; padding: 0 20px; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { width: 100%; text-align: center; }
+
+      .problems-grid { grid-template-columns: 1fr; }
+      .problems-close { padding: 28px 24px; }
+
+      .feature-block { grid-template-columns: 1fr; direction: ltr !important; }
+      .feature-block.reverse > * { direction: ltr; }
+      .feature-img { min-height: 220px; }
+      .feature-content { padding: 32px 24px; }
+      .menu-mockup-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-rows: repeat(2, 130px); }
+
+      .samples-grid { grid-template-columns: 1fr; }
+
+      .ai-grid { grid-template-columns: 1fr; }
+      .ai-img { order: -1; }
+      .ai-img img { height: 260px; }
+
+      .reasons-grid { grid-template-columns: 1fr; }
+
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+
+      .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .cta-btn-outline { display: block; margin: 12px auto 0; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+
+      .floating-cta { bottom: 20px; right: 16px; font-size: 0.78rem; padding: 11px 16px; }
+    }
+
+    @media (max-width: 480px) {
+      html { font-size: 15px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .menu-mockup-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 110px); }
+      .gallery-cell.tall { grid-row: span 1; }
+      .hero-title { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== Floating CTA ===== -->
+<a href="#contact" id="floatingCta" class="floating-cta">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  無料相談する
+</a>
+
+<!-- ===== Header ===== -->
+<header id="header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-accent">石</span>のホームページ工房
+    </div>
+    <nav>
+      <a href="#features">できること</a>
+      <a href="#samples">サンプル</a>
+      <a href="#pricing">料金</a>
+      <a href="#faq">Q&A</a>
+      <a href="#contact" class="nav-cta">無料相談</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section id="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">For Restaurant & Cafe Owners</span>
+    <h1 class="hero-title">
+      お店の魅力を、<br>
+      もっと多くの人に<br>
+      <em>届けませんか。</em>
+    </h1>
+    <p class="hero-desc">
+      予約システム・季節メニューの更新・店内の雰囲気を伝える写真ギャラリー――<br>
+      飲食店に必要な機能を備えたホームページを、専門用語なしで丁寧にご提案します。
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn">無料で相談してみる</a>
+      <a href="#samples" class="btn btn-ghost">サンプルを見る</a>
+    </div>
+    <p class="hero-note">※ 初回のヒアリングは無料です。</p>
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ===== Problems ===== -->
+<section id="problems" style="padding:80px 0;">
+  <div class="container">
+    <span class="section-label">Problems</span>
+    <h2 class="section-title section-title-light" style="color:#fff;margin-bottom:48px;">
+      こんなお困りごとは<br>ありませんか？
+    </h2>
+    <div class="problems-grid">
+      <div class="problem-item reveal reveal-delay-1">
+        <div class="problem-num">01</div>
+        <p class="problem-text">SNSに投稿したいが文章を考えるのが苦手で続かない。写真は撮れるのに発信できていない。</p>
+      </div>
+      <div class="problem-item reveal reveal-delay-2">
+        <div class="problem-num">02</div>
+        <p class="problem-text">季節のメニューや期間限定品をアピールしたいが、写真つきで紹介する場所がない。</p>
+      </div>
+      <div class="problem-item reveal reveal-delay-3">
+        <div class="problem-num">03</div>
+        <p class="problem-text">電話での予約対応が多く、仕込み中や混雑時に出られないことがある。</p>
+      </div>
+      <div class="problem-item reveal reveal-delay-1">
+        <div class="problem-num">04</div>
+        <p class="problem-text">Googleや食べログの口コミに返信したいが、何を書けばよいかわからず放置している。</p>
+      </div>
+      <div class="problem-item reveal reveal-delay-2">
+        <div class="problem-num">05</div>
+        <p class="problem-text">お店の雰囲気を伝えたいのに、検索しても情報が少なくて来店前に不安がられてしまう。</p>
+      </div>
+      <div class="problem-item reveal reveal-delay-3">
+        <div class="problem-num">06</div>
+        <p class="problem-text">「ホームページを作りたい」と思いつつ、費用・手間・難しさが不安でずっと後回しになっている。</p>
+      </div>
+    </div>
+    <div class="problems-close reveal">
+      <p>料理に集中できる環境を整えるために、<br>ホームページがあなたを代わりに働きます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Features ===== -->
+<section id="features" class="section">
+  <div class="container">
+    <span class="section-label reveal">Features</span>
+    <h2 class="section-title reveal">飲食店のホームページに<br>あると嬉しい機能</h2>
+    <p class="section-sub reveal">お客様から「あってよかった」とよく言われる機能を、最初から組み込んで制作します。</p>
+  </div>
+
+  <!-- Feature 1: 予約システム -->
+  <div class="container-wide">
+    <div class="feature-block reveal">
+      <div class="feature-img">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&fit=crop&crop=center" alt="レストラン予約">
+        <div class="feature-img-overlay"></div>
+        <div class="feature-img-badge">機能 01</div>
+      </div>
+      <div class="feature-content">
+        <div class="feature-label">Online Reservation</div>
+        <h3 class="feature-title">ネット予約システム<br>— 電話が鳴らなくても予約が入る</h3>
+        <p class="feature-desc">
+          お客様がホームページから日時・人数・お名前を入力して送信すると、<b>オーナー様が指定したメールアドレスに予約内容が届く</b>仕組みです。深夜や仕込み中でも予約を取り逃しません。
+        </p>
+        <ul class="feature-list">
+          <li>来店日・時間・人数・お名前・電話番号を入力するシンプルなフォーム</li>
+          <li>送信後、指定のメールアドレスに自動で予約内容が届く</li>
+          <li>お客様にも受付確認メールを自動送信</li>
+          <li>コース・席種の選択肢も追加可能</li>
+        </ul>
+        <div class="feature-note">💡 予約専用アプリや月額サービスは不要。ホームページに組み込まれているので追加費用なし。</div>
+        <div class="reservation-mockup" style="margin-top:20px;">
+          <div class="mockup-title">🗓 ご予約フォーム（イメージ）</div>
+          <div class="mockup-row">
+            <div class="mockup-field">来店日を選択</div>
+            <div class="mockup-field">時間帯を選択</div>
+          </div>
+          <div class="mockup-row">
+            <div class="mockup-field">人数を選択</div>
+            <div class="mockup-field">コース（任意）</div>
+          </div>
+          <div class="mockup-row">
+            <div class="mockup-field">お名前</div>
+            <div class="mockup-field">電話番号</div>
+          </div>
+          <div class="mockup-field full" style="margin-bottom:10px;">アレルギー・ご要望（任意）</div>
+          <button class="mockup-submit">予約を申し込む</button>
+          <p class="mockup-note">送信後、ご登録のメールアドレスに確認メールが届きます</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2: 期間限定メニュー -->
+    <div class="feature-block reverse reveal" style="margin-top:2px;">
+      <div class="feature-img">
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80&fit=crop&crop=center" alt="期間限定メニュー">
+        <div class="feature-img-overlay"></div>
+        <div class="feature-img-badge">機能 02</div>
+      </div>
+      <div class="feature-content">
+        <div class="feature-label">Seasonal Menu</div>
+        <h3 class="feature-title">期間限定メニューを<br>写真つきでアピール</h3>
+        <p class="feature-desc">
+          「夏の特製冷麺」「クリスマスコース」など、季節ごとのメニューを<b>写真つきでホームページに掲載・更新</b>できます。来店前に見て楽しみに来てくれるお客様が増えます。
+        </p>
+        <ul class="feature-list">
+          <li>料理の写真・メニュー名・価格・説明文を掲載</li>
+          <li>「期間限定」「本日のおすすめ」などのバッジ表示</li>
+          <li>メニューの追加・削除は連絡いただければ代わりに更新（保守プラン）</li>
+          <li>スマートフォンでも見やすいカード型レイアウト</li>
+        </ul>
+        <div class="feature-note">💡 写真を送っていただければ、テキストの整形・掲載まで対応します。</div>
+        <div style="margin-top:20px;">
+          <div class="menu-mockup-grid">
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&q=80&fit=crop" alt="料理">
+              </div>
+              <div class="menu-card-body">
+                <div class="menu-card-badge">期間限定</div>
+                <div class="menu-card-name">季節の天ざる</div>
+                <div class="menu-card-price">¥1,580</div>
+              </div>
+            </div>
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&q=80&fit=crop" alt="料理">
+              </div>
+              <div class="menu-card-body">
+                <div class="menu-card-badge">今週のおすすめ</div>
+                <div class="menu-card-name">本日の定食</div>
+                <div class="menu-card-price">¥980</div>
+              </div>
+            </div>
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&q=80&fit=crop" alt="スイーツ">
+              </div>
+              <div class="menu-card-body">
+                <div class="menu-card-badge">NEW</div>
+                <div class="menu-card-name">季節のパフェ</div>
+                <div class="menu-card-price">¥680</div>
+              </div>
+            </div>
+          </div>
+          <p class="menu-update-note">↑ メニューの更新はご連絡いただければ代わりに対応します</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 3: 写真ギャラリー -->
+    <div class="feature-block reveal" style="margin-top:2px;">
+      <div class="feature-img">
+        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80&fit=crop&crop=center" alt="カフェの雰囲気">
+        <div class="feature-img-overlay"></div>
+        <div class="feature-img-badge">機能 03</div>
+      </div>
+      <div class="feature-content">
+        <div class="feature-label">Photo Gallery</div>
+        <h3 class="feature-title">お店の雰囲気を<br>写真でしっかり伝える</h3>
+        <p class="feature-desc">
+          「どんなお店か来る前に確認したい」というお客様のために、<b>店内・料理・スタッフの写真をギャラリー形式で掲載</b>します。「雰囲気が良さそう」「清潔感がある」と感じてもらえると来店につながります。
+        </p>
+        <ul class="feature-list">
+          <li>店内・外観・カウンター・個室など場所ごとに整理して掲載</li>
+          <li>スマートフォンで拡大して見られるギャラリー形式</li>
+          <li>写真を追加・差し替えたいときは連絡いただければ対応</li>
+          <li>プロ写真でなくてもOK。スマホ写真でも美しく見せるレイアウトに</li>
+        </ul>
+        <div class="feature-note">💡 写真撮影のアドバイスもします。「どの角度で撮れば映えるか」もお伝えします。</div>
+        <div class="gallery-grid" style="margin-top:20px;">
+          <div class="gallery-cell tall">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80&fit=crop&crop=center" alt="店内">
+          </div>
+          <div class="gallery-cell">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80&fit=crop&crop=center" alt="コーヒー">
+          </div>
+          <div class="gallery-cell">
+            <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=400&q=80&fit=crop&crop=center" alt="カフェ">
+          </div>
+          <div class="gallery-cell">
+            <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=400&q=80&fit=crop&crop=center" alt="料理">
+          </div>
+          <div class="gallery-cell">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80&fit=crop&crop=center" alt="料理">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Sample Sites ===== -->
+<section id="samples" style="padding:88px 0;">
+  <div class="container">
+    <span class="section-label" style="color:var(--gold-light);">Sample Sites</span>
+    <h2 class="section-title reveal" style="color:#fff;">
+      制作サンプルサイトを<br>ご覧ください
+    </h2>
+    <p class="section-sub reveal" style="color:rgba(255,255,255,0.55);">
+      実際にどんなホームページが出来上がるか、サンプルサイトでご確認いただけます。
+    </p>
+  </div>
+  <div class="container">
+    <div class="samples-grid">
+      <!-- Sample 1 -->
+      <div class="sample-card reveal reveal-delay-1">
+        <div class="sample-thumb">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80&fit=crop&crop=center" alt="サンプルサイト1">
+          <div class="sample-thumb-overlay">
+            <span class="sample-thumb-label">サイトを見る →</span>
+          </div>
+        </div>
+        <div class="sample-body">
+          <div class="sample-type">Sample Site 01</div>
+          <div class="sample-name">和食・定食屋 サンプル</div>
+          <p class="sample-desc">予約フォーム・日替わりメニュー・店内ギャラリーを備えた飲食店向けサンプルサイト。</p>
+          <div class="sample-tags">
+            <span class="sample-tag">予約フォーム</span>
+            <span class="sample-tag">メニュー掲載</span>
+            <span class="sample-tag">写真ギャラリー</span>
+          </div>
+          <div class="sample-coming">URLは近日公開予定</div>
+        </div>
+      </div>
+      <!-- Sample 2 -->
+      <div class="sample-card reveal reveal-delay-2">
+        <div class="sample-thumb">
+          <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80&fit=crop&crop=center" alt="サンプルサイト2">
+          <div class="sample-thumb-overlay">
+            <span class="sample-thumb-label">サイトを見る →</span>
+          </div>
+        </div>
+        <div class="sample-body">
+          <div class="sample-type">Sample Site 02</div>
+          <div class="sample-name">カフェ・喫茶店 サンプル</div>
+          <p class="sample-desc">雰囲気を重視したカフェ向けサンプル。季節ドリンクの更新・テイクアウトメニュー対応。</p>
+          <div class="sample-tags">
+            <span class="sample-tag">予約フォーム</span>
+            <span class="sample-tag">季節メニュー</span>
+            <span class="sample-tag">テイクアウト対応</span>
+          </div>
+          <div class="sample-coming">URLは近日公開予定</div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;color:rgba(255,255,255,0.35);font-size:0.82rem;" class="reveal">
+      ※ サンプルサイトのURLは順次公開します。公開時にご連絡差し上げることも可能です。
+    </p>
+  </div>
+</section>
+
+<!-- ===== AI Support ===== -->
+<section id="ai-support" style="padding:88px 0;">
+  <div class="container">
+    <div class="ai-grid">
+      <div class="ai-img reveal">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80&fit=crop&crop=center" alt="カフェ">
+      </div>
+      <div class="ai-content reveal reveal-delay-1">
+        <span class="section-label" style="text-align:left;display:block;margin-bottom:10px;">AI Support</span>
+        <h2 class="ai-title">
+          発信の文章も、<br>
+          <em>AIがお手伝いします。</em>
+        </h2>
+        <p class="ai-desc">
+          「今日のランチをSNSに投稿したいけど文章が思い浮かばない」「口コミにお礼を書きたいけど何と書けば…」そんな悩みをAIが解決します。<br><br>
+          スマートフォンから「今日の日替わり定食の内容と写真」を入力するだけで、投稿文が出てきます。確認して送信するだけでOK。
+        </p>
+        <div class="ai-tags">
+          <span class="ai-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            SNS投稿文・ハッシュタグ
+          </span>
+          <span class="ai-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            メニュー紹介文
+          </span>
+          <span class="ai-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            口コミ返信文
+          </span>
+          <span class="ai-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            予約・問い合わせ返信
+          </span>
+          <span class="ai-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            季節キャンペーン告知
+          </span>
+          <span class="ai-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            常連客へのお知らせ
+          </span>
+        </div>
+        <a href="#contact" class="btn">AI活用サポートを相談する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Reasons ===== -->
+<section id="reasons" class="section">
+  <div class="container">
+    <span class="section-label reveal">Why Choose Us</span>
+    <h2 class="section-title reveal">選ばれる3つの理由</h2>
+    <p class="section-sub reveal">「話しやすかった」「やっと相談できた」とよく言われます。</p>
+    <div class="reasons-grid">
+      <div class="reason-card reveal reveal-delay-1">
+        <div class="reason-num">01</div>
+        <div class="reason-title">専門用語を使いません</div>
+        <p class="reason-desc">「クラウド」「SEO」「プロンプト」などの言葉は、すべてわかりやすい日常語に直してお伝えします。難しい説明は一切しません。</p>
+      </div>
+      <div class="reason-card reveal reveal-delay-2">
+        <div class="reason-num">02</div>
+        <div class="reason-title">小さく始められます</div>
+        <p class="reason-desc">最低利用期間なし。月額3万円から。「合わない」と思えばいつでも解約できます。まず試してみて、合えば続ける。それだけでOKです。</p>
+      </div>
+      <div class="reason-card reveal reveal-delay-3">
+        <div class="reason-num">03</div>
+        <div class="reason-title">一人が最後まで担当します</div>
+        <p class="reason-desc">相談から納品・運用まで、担当者が替わることなく私「石」が一貫対応します。何度も一から説明し直す煩わしさはありません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA Banner ===== -->
+<div class="cta-banner">
+  <div class="cta-banner-bg"></div>
+  <div class="cta-banner-overlay"></div>
+  <div class="cta-banner-content container">
+    <h2>「どんなサイトになるのか見てみたい」<br>そのお気持ちからで大丈夫です</h2>
+    <p>サンプルサイトのご案内・お見積もり・ご相談、すべて無料です。</p>
+    <a href="#contact" class="btn">無料で相談してみる</a>
+    <a href="#samples" class="cta-btn-outline">サンプルを見る</a>
+  </div>
+</div>
+
+<!-- ===== Pricing ===== -->
+<section id="pricing" class="section">
+  <div class="container">
+    <span class="section-label reveal">Pricing</span>
+    <h2 class="section-title reveal">料金のご案内</h2>
+    <p class="section-sub reveal">わかりやすい料金体系で、余計な費用はかかりません。</p>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal reveal-delay-1">
+        <div class="pricing-name">HP制作<br>基本プラン（5P）</div>
+        <div class="pricing-amount">150,000<span>円〜</span></div>
+        <div class="pricing-note">スマホ対応・予約フォーム込み</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li>5ページまで</li>
+          <li>スマートフォン対応</li>
+          <li>予約・お問い合わせフォーム</li>
+          <li>Googleマップ連携</li>
+        </ul>
+      </div>
+      <div class="pricing-card reveal reveal-delay-2">
+        <div class="pricing-name">HP制作<br>充実プラン（10P）</div>
+        <div class="pricing-amount">300,000<span>円〜</span></div>
+        <div class="pricing-note">メニュー・ギャラリー機能付き</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li>10ページまで</li>
+          <li>期間限定メニュー機能</li>
+          <li>写真ギャラリーページ</li>
+          <li>基本プランの内容含む</li>
+        </ul>
+      </div>
+      <div class="pricing-card reveal reveal-delay-3">
+        <div class="pricing-name">HP月額保守</div>
+        <div class="pricing-amount">5,000<span>円/月</span></div>
+        <div class="pricing-note">メニュー更新・写真差し替え対応</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li>ドメイン・サーバー管理</li>
+          <li>メニュー・写真の更新</li>
+          <li>営業時間の変更対応</li>
+        </ul>
+      </div>
+      <div class="pricing-card featured reveal reveal-delay-1">
+        <div class="pricing-name">AI活用サポート<br>（月1回訪問）</div>
+        <div class="pricing-amount">30,000<span>円/月</span></div>
+        <div class="pricing-note">初月のヒアリングは無料</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li>月1回訪問orオンライン</li>
+          <li>SNS・口コミテンプレ作成</li>
+          <li>チャット・電話相談</li>
+          <li>最低期間なし・いつでも解約可</li>
+        </ul>
+      </div>
+      <div class="pricing-card reveal reveal-delay-2">
+        <div class="pricing-name">AI活用サポート<br>（月2回訪問）</div>
+        <div class="pricing-amount">50,000<span>円/月</span></div>
+        <div class="pricing-note">初月のヒアリングは無料</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li>月2回訪問orオンライン</li>
+          <li>業務特化プロンプト開発</li>
+          <li>チャット・電話相談</li>
+          <li>最低期間なし・いつでも解約可</li>
+        </ul>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;color:var(--text-light);font-size:0.85rem;" class="reveal">※ 料金はすべて税別です。詳細はお気軽にご相談ください。</p>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="section">
+  <div class="container">
+    <span class="section-label reveal">FAQ</span>
+    <h2 class="section-title reveal">よくあるご質問</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span>予約はどこに届くのですか？電話番号は必要ですか？</span>
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">お客様がフォームから予約を送信すると、オーナー様が指定したメールアドレスに予約内容が届きます。電話は不要です。ただし、確認の連絡をご希望の場合は電話番号を入力欄に追加することも可能です。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span>メニューや写真を自分で更新できますか？</span>
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">月額保守プラン（5,000円/月）にご加入いただければ、「新メニューの写真と説明を送ります」とご連絡いただくだけで代わりに更新します。ご自身で更新できる仕組みもご希望があれば対応可能です（別途お見積り）。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span>写真がスマートフォンで撮ったものでも大丈夫ですか？</span>
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">もちろんです。最近のスマートフォンのカメラは非常に高性能です。「どんな角度で撮ればよいか」「どんな光の下で撮ればよいか」といったアドバイスもしますので、プロの撮影なしでも十分魅力的な写真で構成できます。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span>Googleや食べログとの連携はできますか？</span>
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Googleマップの埋め込み表示や、Googleビジネスプロフィールとの紐付け設定はお手伝いできます。食べログや一休.comなどの外部予約サービスのリンクボタンをホームページに設置することも可能です。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span>ホームページを持つと本当にお客様は増えますか？</span>
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">効果には個人差がありますが、「地域名＋料理ジャンル」で検索したときに表示されるようになります。特にGoogleマップとの連携設定を行うことで、近くで飲食店を探しているお客様に見つけてもらいやすくなります。また、既存のお客様がご友人に紹介するときに「ホームページ見てね」と言えるようになるだけでも、信頼感が高まります。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span>制作期間はどのくらいかかりますか？</span>
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">ヒアリング〜公開まで、目安として3〜6週間です。写真や文章の素材をすぐにご用意いただけると短縮できます。急ぎの場合はご相談ください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contact ===== -->
+<section id="contact" style="padding:88px 0;">
+  <div class="container">
+    <span class="section-label" style="color:var(--gold-light);">Contact</span>
+    <h2 class="section-title reveal" style="color:#fff;">お問い合わせ・無料相談</h2>
+    <p class="section-sub reveal" style="color:rgba(255,255,255,0.55);">「どんなサイトができるか見てみたい」だけでも大丈夫です。お気軽にどうぞ。</p>
+    <div class="contact-wrapper">
+      <div class="contact-info reveal">
+        <h3>お電話・メールでもどうぞ</h3>
+        <p>フォームからご送信いただくか、直接メールでもお気軽にどうぞ。初回のご相談は無料です。</p>
+        <div class="contact-email" style="font-size:1.1rem;font-weight:700;color:var(--gold-light);margin-bottom:8px;">
+          ✉ <a href="mailto:06721229k.i@gmail.com" style="color:var(--gold-light);">06721229k.i@gmail.com</a>
+        </div>
+        <div class="contact-tel-note">受付時間：毎日 9:00〜24:00</div>
+      </div>
+      <div class="contact-form reveal reveal-delay-2">
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">お名前<span class="req">必須</span></label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="例：山田 太郎" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="tel">電話番号</label>
+              <input type="tel" id="tel" name="tel" class="form-control" placeholder="例：090-0000-0000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">メールアドレス<span class="req">必須</span></label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="例：yamada@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="business">お店の業態<span class="req">必須</span></label>
+            <select id="business" name="business" class="form-control" required>
+              <option value="" disabled selected>業態を選択してください</option>
+              <option value="washoku">和食・定食屋・居酒屋</option>
+              <option value="cafe">カフェ・喫茶店</option>
+              <option value="ramen">ラーメン・そば・うどん</option>
+              <option value="italian">イタリアン・フレンチ・洋食</option>
+              <option value="yakiniku">焼肉・ホルモン</option>
+              <option value="other">その他飲食店</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="interest">ご興味のあるサービス</label>
+            <select id="interest" name="interest" class="form-control">
+              <option value="" disabled selected>選択してください（任意）</option>
+              <option>ホームページ制作</option>
+              <option>ホームページ制作＋AI活用サポート</option>
+              <option>AI活用サポートのみ</option>
+              <option>まだわからない・相談したい</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">お問い合わせ内容<span class="req">必須</span></label>
+            <textarea id="message" name="message" class="form-control" placeholder="「まず話を聞いてみたい」「サンプルを見たい」でも大丈夫です。" required></textarea>
+          </div>
+          <button type="submit" class="btn form-submit">送信する（無料相談を申し込む）</button>
+          <p class="form-note">送信後、2営業日以内にご返信します。</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <h3>✅ 送信が完了しました</h3>
+          <p style="color:rgba(255,255,255,0.6)">ご連絡いただきありがとうございます。<br>2営業日以内にご返信いたします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><span>石</span>のホームページ工房</div>
+      <p class="footer-tagline">地元のお店のために、<br>ホームページ制作とAI活用サポートを提供しています。</p>
+    </div>
+    <div class="footer-nav">
+      <h4>ページ内リンク</h4>
+      <div class="footer-nav-links">
+        <a href="#features">できること（機能）</a>
+        <a href="#samples">サンプルサイト</a>
+        <a href="#ai-support">AI活用サポート</a>
+        <a href="#pricing">料金</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#contact">お問い合わせ</a>
+        <a href="index.html">トップページへ戻る</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copy">&copy; 2026 石のホームページ工房. All rights reserved.</div>
+</footer>
+
+<script>
+  /* Header scroll + Floating CTA */
+  const header = document.getElementById('header');
+  const floatingCta = document.getElementById('floatingCta');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    header.classList.toggle('scrolled', y > 60);
+    floatingCta.classList.toggle('show', y > 320);
+  }, { passive: true });
+
+  /* FAQ */
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  /* Form
+   * 【初回のみ設定が必要です】
+   * フォームを送信するとFormspreeというサービス経由でメールが届きます。
+   * 初回の送信後、06721229k.i@gmail.com に確認メールが届きますので
+   * 「Confirm your email」ボタンをクリックしてください。それ以降は自動で届きます。
+   */
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = '送信中…';
+    btn.disabled = true;
+
+    const data = new FormData(form);
+    data.append('_subject', '【無料相談】石のホームページ工房へのお問い合わせ');
+
+    try {
+      const res = await fetch('https://formspree.io/f/06721229k.i@gmail.com', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        alert('送信できませんでした。大変お手数ですが、直接 06721229k.i@gmail.com までメールをお送りください。');
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
+    } catch (err) {
+      alert('送信できませんでした。大変お手数ですが、直接 06721229k.i@gmail.com までメールをお送りください。');
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
+  }
+
+  /* Scroll reveal */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* Smooth scroll */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>整骨院・鍼灸院向け｜LINE返信・ブログ・予約対応をAIで時短｜石のホームページ工房</title>
+  <meta name="description" content="個人経営の整骨院・整体院・鍼灸院向け。LINE返信テンプレ・ブログ記事・予約対応文をAIで効率化。ホームページ制作も15万円〜。専門用語なし、月額3万円〜。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1e3a30;
+      --navy-dark: #112318;
+      --navy-mid: #2a5040;
+      --gold: #b89040;
+      --gold-light: #d4b06a;
+      --gold-pale: #f0e6cc;
+      --cream: #f8f7f0;
+      --cream-dark: #ece8dc;
+      --white: #ffffff;
+      --text-dark: #1a1a1a;
+      --text-mid: #3d3d3d;
+      --text-light: #666666;
+      --border: #d0cbb8;
+      --shadow: rgba(30,58,48,0.12);
+      --shadow-deep: rgba(30,58,48,0.22);
+      --serif: 'Noto Serif JP', serif;
+      --sans: 'Noto Sans JP', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 18px; }
+    body { font-family: var(--sans); color: var(--text-dark); background: var(--cream); line-height: 1.8; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+    .section-title { font-family: var(--serif); font-size: clamp(1.6rem,3.5vw,2.4rem); font-weight: 700; color: var(--navy); text-align: center; line-height: 1.5; margin-bottom: 16px; }
+    .section-sub { text-align: center; color: var(--text-light); font-size: 1rem; margin-bottom: 56px; line-height: 1.7; }
+    .gold-line { display: block; width: 48px; height: 3px; background: var(--gold); margin: 16px auto 0; border-radius: 2px; }
+    .btn { display: inline-block; background: var(--gold); color: var(--white); font-family: var(--serif); font-size: 1.15rem; font-weight: 700; padding: 20px 44px; border-radius: 4px; border: none; cursor: pointer; transition: background 0.25s, transform 0.15s, box-shadow 0.25s; box-shadow: 0 4px 20px rgba(184,144,64,0.4); text-align: center; letter-spacing: 0.05em; }
+    .btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(184,144,64,0.5); }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(17,35,24,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(184,144,64,0.3); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1100px; margin: 0 auto; }
+    .logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--white); letter-spacing: 0.05em; }
+    .logo span { color: var(--gold-light); }
+    .logo-sub { font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-left: 10px; }
+    nav { display: flex; gap: 8px; align-items: center; }
+    nav a { color: rgba(255,255,255,0.8); font-size: 0.88rem; padding: 6px 12px; border-radius: 3px; transition: color 0.2s, background 0.2s; }
+    nav a:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+    .nav-cta { background: var(--gold); color: var(--white) !important; font-weight: 700; padding: 8px 18px !important; border-radius: 4px !important; }
+    #hero { position: relative; background: var(--navy-dark); overflow: hidden; min-height: 88vh; display: flex; align-items: center; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 75% 50%, rgba(42,80,64,0.7), transparent), radial-gradient(ellipse 40% 40% at 20% 80%, rgba(184,144,64,0.06), transparent), linear-gradient(145deg, #112318 0%, #1e3a30 50%, #112318 100%); }
+    .hero-pattern { position: absolute; top: 0; right: 0; width: 480px; height: 100%; opacity: 0.04; background-image: radial-gradient(circle, rgba(184,144,64,1) 1px, transparent 1px); background-size: 28px 28px; }
+    .hero-content { position: relative; z-index: 2; max-width: 780px; padding: 60px 40px; animation: fadeUp 0.9s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-badge { display: inline-block; background: rgba(184,144,64,0.2); border: 1px solid rgba(184,144,64,0.5); color: var(--gold-light); font-size: 0.85rem; padding: 6px 16px; border-radius: 2px; letter-spacing: 0.12em; margin-bottom: 28px; font-family: var(--serif); }
+    .hero-title { font-family: var(--serif); font-size: clamp(2rem,5.5vw,3.4rem); font-weight: 900; color: var(--white); line-height: 1.4; margin-bottom: 24px; }
+    .hero-title em { font-style: normal; color: var(--gold-light); display: block; }
+    .hero-desc { color: rgba(255,255,255,0.75); font-size: 1.05rem; line-height: 1.9; margin-bottom: 40px; max-width: 560px; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-note { margin-top: 20px; color: rgba(255,255,255,0.45); font-size: 0.82rem; }
+    .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.4); font-size: 0.78rem; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bounce 2s ease-in-out infinite; }
+    .hero-scroll-arrow { width: 24px; height: 24px; border-right: 2px solid rgba(184,144,64,0.5); border-bottom: 2px solid rgba(184,144,64,0.5); transform: rotate(45deg); }
+    @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+    #problems { background: var(--cream-dark); }
+    .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .problem-card { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 6px; padding: 24px 28px; display: flex; align-items: flex-start; gap: 16px; transition: box-shadow 0.25s, transform 0.2s; }
+    .problem-card:hover { box-shadow: 0 6px 24px var(--shadow); transform: translateY(-2px); }
+    .problem-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+    .problem-text { font-size: 1rem; line-height: 1.7; color: var(--text-mid); }
+    .problems-ending { text-align: center; margin-top: 48px; padding: 32px; background: var(--navy); border-radius: 8px; color: var(--white); font-family: var(--serif); font-size: clamp(1.1rem,2.5vw,1.5rem); font-weight: 700; line-height: 1.7; }
+    .problems-ending span { color: var(--gold-light); }
+    #reasons { background: var(--cream); }
+    .reasons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+    .reason-card { background: var(--white); border-radius: 10px; padding: 40px 32px; box-shadow: 0 4px 24px var(--shadow); text-align: center; position: relative; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+    .reason-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px var(--shadow-deep); }
+    .reason-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+    .reason-num { font-family: var(--serif); font-size: 3.5rem; font-weight: 900; color: var(--gold-pale); line-height: 1; margin-bottom: 12px; }
+    .reason-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; line-height: 1.5; }
+    .reason-desc { font-size: 0.95rem; color: var(--text-light); line-height: 1.8; }
+    #services { background: var(--navy); }
+    #services .section-title { color: var(--white); }
+    #services .section-sub { color: rgba(255,255,255,0.6); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 28px; }
+    .service-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(184,144,64,0.25); border-radius: 10px; padding: 40px 36px; transition: background 0.3s; }
+    .service-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(184,144,64,0.5); }
+    .service-icon { font-size: 2.8rem; margin-bottom: 20px; }
+    .service-name { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .service-price { font-size: 0.95rem; color: var(--gold-light); font-weight: 700; margin-bottom: 20px; }
+    .service-desc { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.8; margin-bottom: 24px; }
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .service-list li { display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.6; }
+    .service-list li::before { content: '✓'; color: var(--gold-light); font-weight: 700; flex-shrink: 0; }
+    #usecases { background: var(--cream-dark); }
+    .usecase-box { background: var(--white); border-radius: 10px; padding: 48px; box-shadow: 0 4px 24px var(--shadow); display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .usecase-intro h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+    .usecase-intro p { color: var(--text-light); font-size: 0.95rem; line-height: 1.9; }
+    .usecase-examples h4 { font-weight: 700; color: var(--gold); margin-bottom: 16px; font-size: 0.85rem; letter-spacing: 0.08em; }
+    .usecase-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .usecase-tag { background: var(--gold-pale); color: var(--navy); font-size: 0.9rem; font-weight: 600; padding: 8px 16px; border-radius: 3px; border: 1px solid rgba(184,144,64,0.3); }
+    #pricing { background: var(--cream); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .pricing-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 32px 24px; text-align: center; transition: box-shadow 0.25s, transform 0.2s; }
+    .pricing-card:hover { box-shadow: 0 8px 28px var(--shadow); transform: translateY(-3px); }
+    .pricing-card.featured { border-color: var(--gold); border-width: 2px; position: relative; }
+    .pricing-card.featured::before { content: '人気プラン'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--white); font-size: 0.78rem; font-weight: 700; padding: 4px 16px; border-radius: 20px; white-space: nowrap; }
+    .pricing-name { font-family: var(--serif); font-size: 0.95rem; font-weight: 700; color: var(--text-mid); margin-bottom: 16px; line-height: 1.5; }
+    .pricing-amount { font-family: var(--serif); font-size: 2rem; font-weight: 900; color: var(--navy); line-height: 1; margin-bottom: 4px; }
+    .pricing-amount span { font-size: 0.95rem; font-weight: 400; }
+    .pricing-note { font-size: 0.8rem; color: var(--text-light); margin-top: 8px; line-height: 1.5; }
+    .pricing-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+    .pricing-features { list-style: none; text-align: left; font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; display: flex; flex-direction: column; gap: 6px; }
+    .pricing-features li::before { content: '・'; color: var(--gold); }
+    #faq { background: var(--cream-dark); }
+    .faq-list { max-width: 740px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .faq-q { width: 100%; text-align: left; font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--navy); padding: 22px 28px; background: none; border: none; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; line-height: 1.6; transition: background 0.2s; }
+    .faq-q:hover { background: var(--cream); }
+    .faq-q-mark { flex-shrink: 0; width: 28px; height: 28px; background: var(--navy); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; margin-top: 1px; }
+    .faq-arrow { margin-left: auto; flex-shrink: 0; transition: transform 0.3s; color: var(--gold); font-size: 1rem; margin-top: 2px; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 28px 22px 68px; font-size: 0.95rem; color: var(--text-mid); line-height: 1.9; border-top: 1px solid var(--border); }
+    .faq-item.open .faq-a { display: block; }
+    #contact { background: var(--navy); }
+    #contact .section-title { color: var(--white); }
+    #contact .section-sub { color: rgba(255,255,255,0.6); }
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; align-items: start; }
+    .contact-info h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 16px; }
+    .contact-info p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.9; margin-bottom: 28px; }
+    .contact-tel { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--gold-light); margin-bottom: 8px; }
+    .contact-tel-note { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+    .contact-email { margin-top: 16px; color: var(--gold-light); font-size: 0.95rem; }
+    .contact-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(184,144,64,0.25); border-radius: 10px; padding: 40px 36px; }
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
+    .form-label .required { background: var(--gold); color: var(--white); font-size: 0.7rem; padding: 2px 7px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+    .form-control { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 5px; padding: 14px 18px; font-size: 1rem; color: var(--white); font-family: var(--sans); transition: border-color 0.2s; outline: none; }
+    .form-control::placeholder { color: rgba(255,255,255,0.3); }
+    .form-control:focus { border-color: var(--gold); background: rgba(255,255,255,0.1); }
+    select.form-control option { background: var(--navy-dark); color: var(--white); }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+    .form-submit { width: 100%; margin-top: 8px; font-size: 1.1rem; padding: 18px; }
+    .form-note { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-align: center; margin-top: 14px; }
+    .form-success { display: none; text-align: center; padding: 40px; color: var(--white); }
+    .form-success h3 { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-light); margin-bottom: 12px; }
+    .cta-banner { background: linear-gradient(135deg, var(--gold) 0%, #8a6820 100%); padding: 56px 24px; text-align: center; }
+    .cta-banner h2 { font-family: var(--serif); font-size: clamp(1.4rem,3vw,2rem); font-weight: 700; color: var(--white); margin-bottom: 12px; line-height: 1.5; }
+    .cta-banner p { color: rgba(255,255,255,0.85); font-size: 1rem; margin-bottom: 32px; }
+    .cta-btn-white { background: var(--white); color: var(--gold); font-family: var(--serif); font-size: 1.15rem; font-weight: 700; padding: 18px 44px; border-radius: 4px; display: inline-block; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: transform 0.2s; }
+    .cta-btn-white:hover { transform: translateY(-2px); }
+    footer { background: var(--navy-dark); border-top: 1px solid rgba(184,144,64,0.2); padding: 40px 24px; text-align: center; }
+    .footer-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+    .footer-logo span { color: var(--gold-light); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; }
+    @media (max-width: 768px) {
+      html { font-size: 16px; } .section { padding: 60px 0; } nav { display: none; }
+      .hero-content { padding: 40px 24px; } .hero-btns { flex-direction: column; }
+      .hero-btns .btn { width: 100%; } .services-grid { grid-template-columns: 1fr; }
+      .usecase-box { grid-template-columns: 1fr; gap: 28px; padding: 28px; }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; } .hero-pattern { display: none; }
+    }
+    @media (max-width: 480px) { .pricing-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo"><span>石</span>のホームページ工房<span class="logo-sub">整骨院・鍼灸院向け</span></div>
+    <nav>
+      <a href="#problems">お困りごと</a>
+      <a href="#services">サービス</a>
+      <a href="#pricing">料金</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#contact" class="nav-cta">無料相談</a>
+    </nav>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">整骨院・整体院・鍼灸院の先生へ</div>
+      <h1 class="hero-title">
+        治療に集中できる時間を、<br>
+        <em>もっと増やしませんか？</em>
+      </h1>
+      <p class="hero-desc">
+        LINE返信・予約対応・ブログ更新・患者さんへの説明資料――<br>
+        治療以外の「文章仕事」に追われていませんか？<br>
+        AIを使えば、こうした作業を大幅に短縮できます。難しい操作は一切不要です。
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn">まずは無料でご相談ください</a>
+        <a href="#services" class="btn" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.3);box-shadow:none;">サービスを見る</a>
+      </div>
+      <p class="hero-note">※ 初月のヒアリングは無料です。契約の強制は一切ありません。</p>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>スクロール</span><div class="hero-scroll-arrow"></div></div>
+</section>
+
+<section id="problems" class="section">
+  <div class="container">
+    <h2 class="section-title reveal">こんなお困りごとは<br>ありませんか？<span class="gold-line"></span></h2>
+    <p class="section-sub reveal reveal-delay-1">整骨院・鍼灸院の先生から、こういったお声をよくいただきます。</p>
+    <div class="problems-grid">
+      <div class="problem-card reveal reveal-delay-1">
+        <div class="problem-icon">📱</div>
+        <p class="problem-text">LINEでの予約・問い合わせへの返信に時間がかかる。施術中に返せず、後でまとめて対応が大変。</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <div class="problem-icon">📝</div>
+        <p class="problem-text">ブログを更新したいが、何を書けばよいか思い浮かばず、気づけば何ヶ月も止まっている。</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-3">
+        <div class="problem-icon">📄</div>
+        <p class="problem-text">患者さんへの説明資料（施術内容・注意事項）を作りたいが、文章を書くのが苦手で後回しになっている。</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-1">
+        <div class="problem-icon">📅</div>
+        <p class="problem-text">キャンペーンや休診のお知らせの告知文を、毎回ゼロから考えるのが手間がかかる。</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <div class="problem-icon">🌐</div>
+        <p class="problem-text">院のホームページが古くなっている。新規の患者さんが来ても、検索でヒットしているか不安。</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-3">
+        <div class="problem-icon">💻</div>
+        <p class="problem-text">「AIが便利」とは聞くが、何から始めればよいかわからないし、難しそうで一歩が踏み出せない。</p>
+      </div>
+    </div>
+    <div class="problems-ending reveal">
+      その悩み、<span>専門用語なしで</span>、<br>先生のペースで丁寧に解決します。
+    </div>
+  </div>
+</section>
+
+<section id="reasons" class="section">
+  <div class="container">
+    <h2 class="section-title reveal">選ばれる3つの理由<span class="gold-line"></span></h2>
+    <p class="section-sub reveal reveal-delay-1">「話しやすかった」「やっと相談できた」とよく言われます。</p>
+    <div class="reasons-grid">
+      <div class="reason-card reveal reveal-delay-1">
+        <div class="reason-num">01</div>
+        <div class="reason-title">専門用語を使いません</div>
+        <p class="reason-desc">「クラウド」「SEO」「プロンプト」などの言葉は、すべてわかりやすい日常語に直してお伝えします。難しい説明は一切しません。</p>
+      </div>
+      <div class="reason-card reveal reveal-delay-2">
+        <div class="reason-num">02</div>
+        <div class="reason-title">小さく始められます</div>
+        <p class="reason-desc">最低利用期間なし。月額3万円から。「合わない」と思えばいつでも解約できます。まず試してみて、合えば続ける。それだけでOKです。</p>
+      </div>
+      <div class="reason-card reveal reveal-delay-3">
+        <div class="reason-num">03</div>
+        <div class="reason-title">一人が最後まで担当します</div>
+        <p class="reason-desc">相談から納品・運用まで、担当者が替わることなく私「石」が一貫対応します。何度も一から説明し直す煩わしさはありません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section">
+  <div class="container">
+    <h2 class="section-title reveal">サービスのご案内<span class="gold-line"></span></h2>
+    <p class="section-sub reveal reveal-delay-1">ホームページ制作を「入口」に、AIで院の文章仕事を楽にします。</p>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">🏥</div>
+        <div class="service-name">院のホームページ制作</div>
+        <div class="service-price">15万円〜（スマホ対応・全込み）</div>
+        <p class="service-desc">新規の患者さんが検索して見つけやすい、清潔感と信頼感のあるホームページを制作します。施術メニュー・料金・アクセスなどを分かりやすく掲載します。</p>
+        <ul class="service-list">
+          <li>スマートフォン完全対応</li>
+          <li>予約フォーム・お問い合わせフォーム</li>
+          <li>施術メニュー・料金ページ</li>
+          <li>Googleマップ・アクセス掲載</li>
+          <li>Google検索への対応（SEO基本設定）</li>
+          <li>制作後の修正対応</li>
+        </ul>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">🤖</div>
+        <div class="service-name">AI活用サポート</div>
+        <div class="service-price">月額3万円〜（初月のヒアリングは無料）</div>
+        <p class="service-desc">LINE返信・ブログ記事・患者説明資料など、治療以外の文章仕事をAIで効率化します。先生の言葉のトーンに合わせたテンプレートをご用意します。</p>
+        <ul class="service-list">
+          <li>現在の事務作業の整理・ヒアリング</li>
+          <li>AIツールの初期設定・使い方の説明</li>
+          <li>LINE返信・ブログ記事テンプレート作成</li>
+          <li>月1回の訪問またはオンラインサポート</li>
+          <li>チャット・お電話での随時ご相談</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="usecases" class="section">
+  <div class="container">
+    <h2 class="section-title reveal">整骨院・鍼灸院での活用例<span class="gold-line"></span></h2>
+    <p class="section-sub reveal reveal-delay-1">こんな場面でAIが役に立っています。</p>
+    <div class="usecase-box reveal">
+      <div class="usecase-intro">
+        <h3>施術に集中するための「文章サポート」</h3>
+        <p>「肩こり・腰痛の方向けに、温活の重要性についてブログを書いて」と伝えるだけで、ブログ記事の下書きが出てきます。LINE返信も「予約を断る文面を丁寧に」と入力するだけで複数パターンが作れます。あとは確認して送るだけです。</p>
+      </div>
+      <div class="usecase-examples">
+        <h4>具体的にできること</h4>
+        <div class="usecase-tags">
+          <span class="usecase-tag">📱 LINE返信テンプレートの作成</span>
+          <span class="usecase-tag">📅 予約・休診お知らせ文</span>
+          <span class="usecase-tag">📝 ブログ・コラム記事の下書き</span>
+          <span class="usecase-tag">📄 患者向け説明資料の作成</span>
+          <span class="usecase-tag">💊 施術メニューの紹介文</span>
+          <span class="usecase-tag">🗓 キャンペーン・告知文</span>
+          <span class="usecase-tag">⭐ 口コミへの返信文</span>
+          <span class="usecase-tag">📸 SNS投稿文の作成</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="section">
+  <div class="container">
+    <h2 class="section-title reveal">料金のご案内<span class="gold-line"></span></h2>
+    <p class="section-sub reveal reveal-delay-1">わかりやすい料金体系で、余計な費用はかかりません。</p>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal reveal-delay-1">
+        <div class="pricing-name">院HP制作<br>基本プラン（5ページ）</div>
+        <div class="pricing-amount">150,000<span>円〜</span></div>
+        <div class="pricing-note">スマホ対応込み</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features"><li>5ページまで</li><li>スマートフォン対応</li><li>予約・お問い合わせフォーム</li><li>Google検索対応</li></ul>
+      </div>
+      <div class="pricing-card reveal reveal-delay-2">
+        <div class="pricing-name">院HP制作<br>充実プラン（10ページ）</div>
+        <div class="pricing-amount">300,000<span>円〜</span></div>
+        <div class="pricing-note">ブログ・お知らせ機能付き</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features"><li>10ページまで</li><li>ブログ・お知らせ機能</li><li>基本プランの内容含む</li><li>原稿サポート付き</li></ul>
+      </div>
+      <div class="pricing-card reveal reveal-delay-3">
+        <div class="pricing-name">HP月額保守</div>
+        <div class="pricing-amount">5,000<span>円/月</span></div>
+        <div class="pricing-note">サーバー・更新込み</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features"><li>ドメイン・サーバー管理</li><li>軽微な文言修正</li><li>セキュリティ維持</li></ul>
+      </div>
+      <div class="pricing-card featured reveal reveal-delay-1">
+        <div class="pricing-name">AI活用サポート<br>標準プラン（月1回訪問）</div>
+        <div class="pricing-amount">30,000<span>円/月</span></div>
+        <div class="pricing-note">初月のヒアリングは無料</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features"><li>月1回訪問orオンライン</li><li>LINE返信テンプレ作成</li><li>チャット・電話相談</li><li>最低期間なし・いつでも解約可</li></ul>
+      </div>
+      <div class="pricing-card reveal reveal-delay-2">
+        <div class="pricing-name">AI活用サポート<br>充実プラン（月2回訪問）</div>
+        <div class="pricing-amount">50,000<span>円/月</span></div>
+        <div class="pricing-note">初月のヒアリングは無料</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features"><li>月2回訪問orオンライン</li><li>業務特化プロンプト開発</li><li>チャット・電話相談</li><li>最低期間なし・いつでも解約可</li></ul>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:32px;color:var(--text-light);font-size:0.9rem;" class="reveal">※ 料金はすべて税別です。詳細はお気軽にご相談ください。</p>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <div class="container">
+    <h2>「まず話を聞いてみたい」で大丈夫です</h2>
+    <p>初月のヒアリングは無料。契約の強制は一切ありません。</p>
+    <a href="#contact" class="cta-btn-white">無料相談はこちら</a>
+  </div>
+</div>
+
+<section id="faq" class="section">
+  <div class="container">
+    <h2 class="section-title reveal">よくあるご質問<span class="gold-line"></span></h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-mark">Q</span><span>患者さんの情報をAIに入力しても大丈夫ですか？</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">患者さんの個人情報はAIに入力しないよう、最初にしっかりとルールをお伝えします。「肩こり・腰痛向けのブログ記事」などの一般的な内容であれば問題ありません。安全な使い方を一緒に設定しますのでご安心ください。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-mark">Q</span><span>施術中でもLINE返信に使えますか？</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">はい、事前にパターン別の返信テンプレートを作成しておくことで、施術の合間に素早く返信できるようになります。「予約受付」「予約変更」「休診のお知らせ」など、よくある返信のテンプレートをまとめてご用意します。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-mark">Q</span><span>パソコンが苦手でも使えますか？</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">もちろんです。スマートフォンでも使えるよう設定します。慣れれば、LINEでメッセージを送る感覚と変わりません。「何を聞いても恥ずかしくない」雰囲気を大切にしています。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-mark">Q</span><span>契約の最低期間はありますか？</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">最低利用期間はありません。1ヶ月試してみて「合わない」と感じたら、いつでも解約できます。解約金もかかりません。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-mark">Q</span><span>ホームページを作ると新規患者さんは増えますか？</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">効果には個人差がありますが、「近くの整骨院を探している方」が検索したときに表示されるようになります。特に地域名＋施術名でのGoogle検索対策を行うことで、新規の方からの問い合わせにつながりやすくなります。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <h2 class="section-title reveal">お問い合わせ・無料相談<span class="gold-line" style="background:var(--gold-light)"></span></h2>
+    <p class="section-sub reveal reveal-delay-1">「話を聞いてみたい」だけでも構いません。お気軽にどうぞ。</p>
+    <div class="contact-wrapper">
+      <div class="contact-info reveal">
+        <h3>お電話・メールでもどうぞ</h3>
+        <p>フォームからご送信いただくか、直接メールでもお気軽にどうぞ。初回のご相談は無料です。</p>
+        <div class="contact-email" style="font-size:1.1rem;font-weight:700;color:var(--gold-light);margin-bottom:8px;">
+          ✉ <a href="mailto:06721229k.i@gmail.com" style="color:var(--gold-light);">06721229k.i@gmail.com</a>
+        </div>
+        <div class="contact-tel-note">受付時間：毎日 9:00〜24:00</div>
+      </div>
+      <div class="contact-form reveal reveal-delay-2">
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-group"><label class="form-label" for="name">お名前<span class="required">必須</span></label><input type="text" id="name" name="name" class="form-control" placeholder="例：山田 太郎" required></div>
+          <div class="form-group"><label class="form-label" for="tel">電話番号</label><input type="tel" id="tel" name="tel" class="form-control" placeholder="例：090-0000-0000"></div>
+          <div class="form-group"><label class="form-label" for="email">メールアドレス<span class="required">必須</span></label><input type="email" id="email" name="email" class="form-control" placeholder="例：yamada@example.com" required></div>
+          <div class="form-group"><label class="form-label" for="business">業種<span class="required">必須</span></label>
+            <select id="business" name="business" class="form-control" required>
+              <option value="" disabled selected>業種を選択してください</option>
+              <option value="seikotsuin">整骨院</option>
+              <option value="seitai">整体院</option>
+              <option value="shinkyu">鍼灸院</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label" for="message">お問い合わせ内容<span class="required">必須</span></label><textarea id="message" name="message" class="form-control" placeholder="「まず話を聞いてみたい」でも大丈夫です。" required></textarea></div>
+          <button type="submit" class="btn form-submit">送信する（無料相談を申し込む）</button>
+          <p class="form-note">送信後、2営業日以内にご返信します。</p>
+        </form>
+        <div class="form-success" id="formSuccess"><h3>✅ 送信が完了しました</h3><p style="color:rgba(255,255,255,0.7)">ご連絡いただきありがとうございます。<br>2営業日以内にご返信いたします。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><span>石</span>のホームページ工房</div>
+  <div class="footer-links"><a href="index.html">トップページ</a><a href="#problems">お困りごと</a><a href="#services">サービス</a><a href="#pricing">料金</a><a href="#faq">よくある質問</a><a href="#contact">お問い合わせ</a></div>
+  <div class="footer-copy">&copy; 2026 石のホームページ工房. All rights reserved.</div>
+</footer>
+
+<script>
+  function toggleFaq(btn) { const item = btn.closest('.faq-item'); const isOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open')); if (!isOpen) item.classList.add('open'); }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = '送信中…'; btn.disabled = true;
+    const data = new FormData(form);
+    data.append('_subject', '【無料相談】石のホームページ工房へのお問い合わせ');
+    try {
+      const res = await fetch('https://formspree.io/f/06721229k.i@gmail.com', {
+        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        alert('送信できませんでした。大変お手数ですが、直接 06721229k.i@gmail.com までメールをお送りください。');
+        btn.textContent = originalText; btn.disabled = false;
+      }
+    } catch (err) {
+      alert('送信できませんでした。大変お手数ですが、直接 06721229k.i@gmail.com までメールをお送りください。');
+      btn.textContent = originalText; btn.disabled = false;
+    }
+  }
+  const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('a[href^="#"]').forEach(link => { link.addEventListener('click', e => { const target = document.querySelector(link.getAttribute('href')); if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
+</script>
+</body>
+</html>
